@@ -1,0 +1,11 @@
+;//////////////////////////////////			
+;/ Compte de 1 en 1 a partir de 0 /
+;//////////////////////////////////
+
+	LDA nb_1 	; charge 0 dans A
+loop:
+	OUT 		; Affiche A
+	ADD nb_2 	; Ajoute 1
+	JMP loop	; Saut jusqu'à loop
+nb_1	EQU 0		; Définition de nb_1
+nb_2	EQU 1		; Définition de nb_2
