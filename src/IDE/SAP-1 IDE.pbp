@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://www.purebasic.com/namespace" version="1.0" creator="PureBasic 5.72 (Windows - x64)">
+  <section name="config">
+    <options closefiles="1" openmode="0" name="SAP-1 IDE"/>
+    <comment>Ide pour l'assembleur sapasm</comment>
+  </section>
+  <section name="data">
+    <explorer view="..\SAP-1 Assembler\" pattern="0"/>
+    <log show="1"/>
+    <lastopen date="2020-05-30 01:47" user="laure" host="PC-LAURE"/>
+  </section>
+  <section name="files">
+    <file name="SAP-1 IDE.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
+      <fingerprint md5="0bfe7c2ebeba0ef3ed3744d834b8c382"/>
+    </file>
+  </section>
+  <section name="targets">
+    <target name="Cible par défaut" enabled="1" default="1">
+      <inputfile value="SAP-1 IDE.pb"/>
+      <outputfile value="SAP-IDE.exe"/>
+      <executable value="SAP-IDE.exe"/>
+      <options xpskin="1" debug="1"/>
+      <temporaryexe value="source"/>
+    </target>
+    <target name="SAP-IDE" enabled="1" default="0">
+      <inputfile value="SAP-1 IDE.pb"/>
+      <outputfile value="..\..\tools\assembler\SAP1-IDE.exe"/>
+      <executable value="..\..\tools\assembler\SAP1-IDE.exe"/>
+      <options/>
+    </target>
+  </section>
+</project>

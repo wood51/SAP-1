@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://www.purebasic.com/namespace" version="1.0" creator="PureBasic 5.72 (Windows - x64)">
+  <section name="config">
+    <options closefiles="1" openmode="0" name="SAP-1 Assembler"/>
+  </section>
+  <section name="data">
+    <explorer view="C:\ProgramData\PureBasic\Examples\" pattern="0"/>
+    <log show="1"/>
+    <lastopen date="2020-05-30 01:47" user="laure" host="PC-LAURE"/>
+  </section>
+  <section name="files">
+    <file name="sap-asm.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
+      <fingerprint md5="196a9e3a49f711c3a3431a8a2431692d"/>
+    </file>
+  </section>
+  <section name="targets">
+    <target name="Cible par défaut" enabled="1" default="1">
+      <inputfile value="sap-asm.pb"/>
+      <outputfile value="sapasm.exe"/>
+      <commandline value="-i sap.txt -o hex.txt"/>
+      <executable value="sapasm.exe"/>
+      <options xpskin="1" debug="1"/>
+      <purifier enable="1"/>
+      <temporaryexe value="source"/>
+      <icon enable="0">sapasm.ico</icon>
+      <format exe="console" cpu="0"/>
+      <debugger custom="1" type="ide"/>
+      <warnings custom="1" type="error"/>
+      <watchlist>token()\value</watchlist>
+    </target>
+    <target name="Release" enabled="1" default="0">
+      <inputfile value="sap-asm.pb"/>
+      <outputfile value="..\..\tools\assembler\sapasm.exe"/>
+      <executable value="..\..\tools\assembler\sapasm.exe"/>
+      <options/>
+      <icon enable="0">sapasm.ico</icon>
+      <format exe="console" cpu="0"/>
+      <warnings custom="1" type="error"/>
+      <compilecount enable="1" value="9"/>
+      <buildcount enable="1" value="10"/>
+    </target>
+  </section>
+</project>
