@@ -276,7 +276,7 @@ Procedure _lex_fill_instruction_map()
 EndProcedure
 
 Procedure.i _lex_open_assembler_file(strFilename.s)
-  hFile.i = ReadFile(#PB_Any,strFilename)
+  hFile = ReadFile(#PB_Any,strFilename,#PB_UTF8)
   If hFile
     While Eof(hFile) = 0
       AddElement(source())
@@ -290,6 +290,7 @@ Procedure.i _lex_open_assembler_file(strFilename.s)
     ProcedureReturn -1
   EndIf
 EndProcedure
+
 
 Procedure.s _lex_pack_string(string.s, separator.s) 
   Protected Chaine$,Chaine2$
@@ -702,7 +703,7 @@ Else
 EndIf
 End -1
 ; IDE Options = PureBasic 5.72 (Windows - x64)
-; CursorPosition = 702
-; FirstLine = 51
-; Folding = GAAAAAw
+; CursorPosition = 278
+; FirstLine = 110
+; Folding = GACAAA5
 ; EnableXP

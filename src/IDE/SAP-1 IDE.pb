@@ -161,7 +161,7 @@ Procedure SCI_SaveFile(gadget)
           *Buffer  = AllocateMemory(numBytes+1)
           ScintillaSendMessage(id, #SCI_GETTEXT, numBytes + 1, *Buffer)
           text.s = PeekS(*Buffer, -1, #PB_UTF8)
-          WriteData(hFile,*Buffer,numBytes+1)
+          WriteData(hFile,*Buffer,numBytes)
           CloseFile(hfile)
           FreeMemory(*Buffer)
           
@@ -178,7 +178,7 @@ Procedure SCI_SaveFile(gadget)
         *Buffer  = AllocateMemory(numBytes+1)
         ScintillaSendMessage(id, #SCI_GETTEXT, numBytes + 1, *Buffer)
         text.s = PeekS(*Buffer, -1, #PB_UTF8)
-        WriteData(hFile,*Buffer,numBytes+1)
+        WriteData(hFile,*Buffer,numBytes)
         CloseFile(hfile)
         FreeMemory(*Buffer)
         
@@ -196,7 +196,7 @@ Procedure SCI_SaveFileAs(gadget)
     If hFile
       numBytes = ScintillaSendMessage(gadget, #SCI_GETLENGTH)
       If numBytes
-        *Buffer  = AllocateMemory(numBytes)
+        *Buffer  = AllocateMemory(numBytes+1)
         ScintillaSendMessage(id, #SCI_GETTEXT, numBytes + 1, *Buffer)
         text.s = PeekS(*Buffer, -1, #PB_UTF8)
         WriteData(hFile,*Buffer,numBytes)
@@ -217,11 +217,10 @@ Procedure SCI_OpenFile(gadget)
     size = FileSize(strFilename)
     If size >0
       
-      hFile=ReadFile(#PB_Any,strFilename)
+      hFile=ReadFile(#PB_Any,strFilename,#PB_UTF8)
       If hFile
         
         SetWindowTitle(0,StringField(GetWindowTitle(0),1," - ") + " - " + GetFilePart(strFilename))
-        
         *Buffer = AllocateMemory(size+1)
         If *Buffer
           ReadData(hFile,*Buffer,size+1)
@@ -340,12 +339,16 @@ Procedure Compile()
     SCI_SaveFile(0)
     hFile = CreateFile(#PB_Any,"sap.tmp") 
     If hFile
+      If numBytes
+        
       *Buffer  = AllocateMemory(numBytes+1)
       ScintillaSendMessage(id, #SCI_GETTEXT, numBytes + 1, *Buffer)
       text.s = PeekS(*Buffer, -1, #PB_UTF8)
-      WriteData(hFile,*Buffer,numBytes)
+      WriteData(hFile,*Buffer,numBytes+1)
       CloseFile(hfile)
       FreeMemory(*Buffer)
+    EndIf
+    
     EndIf
     dest_file.s = StringField(GetFilePart(strFilename),1,".")+".bin"
     dest_path.s = GetPathPart(strFilename)
@@ -450,10 +453,6 @@ If OpenWindow(0, 0, 0, 800, 600, "SAP-1 IDE - "+strFilename, #PB_Window_SystemMe
     SetActiveGadget(0)
     SCI_InitStyle(0)
     
-    
-
-
-    
   EndIf
   
   Repeat
@@ -494,7 +493,7 @@ If OpenWindow(0, 0, 0, 800, 600, "SAP-1 IDE - "+strFilename, #PB_Window_SystemMe
 EndIf
 ;}
 ; IDE Options = PureBasic 5.72 (Windows - x64)
-; CursorPosition = 229
-; FirstLine = 75
-; Folding = AAQx-
+; CursorPosition = 454
+; FirstLine = 150
+; Folding = AAQg-
 ; EnableXP

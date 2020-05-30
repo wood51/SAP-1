@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://www.purebasic.com/namespace" version="1.0" creator="PureBasic 5.72 (Windows - x64)">
+  <section name="config">
+    <options closefiles="1" openmode="0" name="SAP-1 Tools"/>
+    <comment>Assembleur + IDE Tools for SAP-1 Computer</comment>
+  </section>
+  <section name="data">
+    <explorer view="..\..\SAP-1 Assembler\" pattern="0"/>
+    <log show="1"/>
+    <lastopen date="2020-05-30 09:26" user="laure" host="PC-LAURE"/>
+  </section>
+  <section name="files">
+    <file name="assembleur\sap-asm.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="++"/>
+      <fingerprint md5="5e48e49fcff55d95891eb8df16c94663"/>
+    </file>
+    <file name="IDE\SAP-1 IDE.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="++"/>
+      <fingerprint md5="4ccd1f7b7df62ebe55092392c4a0a2d2"/>
+    </file>
+  </section>
+  <section name="targets">
+    <target name="IDE Debug" enabled="1" default="1">
+      <inputfile value="IDE\SAP-1 IDE.pb"/>
+      <outputfile value="..\tools\assembler\SAP1-IDE.exe"/>
+      <executable value="..\tools\assembler\SAP1-IDE.exe"/>
+      <directory value="..\tools\assembler\"/>
+      <options/>
+      <temporaryexe value="source"/>
+    </target>
+    <target name="Assembleur Debug" enabled="1" default="0">
+      <inputfile value="assembleur\sap-asm.pb"/>
+      <outputfile value="..\tools\assembler\sapasm.exe"/>
+      <executable value="..\tools\assembler\sapasm.exe"/>
+      <directory value="..\tools\assembler\"/>
+      <options/>
+      <temporaryexe value="source"/>
+    </target>
+  </section>
+</project>

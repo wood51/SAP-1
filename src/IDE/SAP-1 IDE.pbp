@@ -8,7 +8,7 @@
   <section name="data">
     <explorer view="..\SAP-1 Assembler\" pattern="0"/>
     <log show="1"/>
-    <lastopen date="2020-05-30 01:47" user="laure" host="PC-LAURE"/>
+    <lastopen date="2020-05-30 08:19" user="laure" host="PC-LAURE"/>
   </section>
   <section name="files">
     <file name="SAP-1 IDE.pb">
