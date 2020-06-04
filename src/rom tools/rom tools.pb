@@ -16,7 +16,7 @@
 #II =   %0100000000000000
 #IO =   %1000000000000000
 
-#ROM_SIZE = 256
+#ROM_SIZE = 1024
 #INSTRUCTION_NUMBER = 16
 
 ;{ 1 Instruction se fait en 5 Cycles les 2 premiers sont le fetch cycle pour toutes instrcutions
@@ -52,7 +52,7 @@ DataSection
   Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #RO|#AI , 0                ; LDA OptCode 0001
   Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #RO|#BI , #EO|#AI|#FI      ; ADD OptCode 0010
   Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #RO|#BI , #SU|#EO|#AI|#FI  ; SUB OptCode 0011
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0       , 0                ; 
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#AI   , 0       , 0                ; LDI OptCOde 0100
   Data.i #MI|#CO , #II|#RO|#CE , 0         , 0       , 0                ; 
   Data.i #MI|#CO , #II|#RO|#CE , 0         , 0       , 0                ; 
   Data.i #MI|#CO , #II|#RO|#CE , 0         , 0       , 0                ; 
@@ -68,37 +68,74 @@ EndDataSection
 
 Dim ROM(#ROM_SIZE)
 
-OpenConsole()
-
-; Remplissage du tableau mémoire par des zéro
-For i = 0 To  (ArraySize(ROM()) - 1)
-  ROM(i)=0
-Next
-
-; Génération suivant les instructions et cycle
-Restore Instructions
-For i= 0 To 15 ; Pour chaque instruction 
-  For j = 0 To 4 ; Pour chaque cycle
-    Read Inst
-    Adr = j << 4 + i ; Adr -> jjjj iiii => j :-> cycle # i :-> optcode
-    ROM(Adr) = Inst
-  Next
-Next
-
-; Dump mémoire
-For i = 0 To  (ArraySize(ROM()) - 1)
-  If (i+1) % 16 <> 0
-    Print(" " + RSet(Hex(ROM(i)),4,"0"))
-  Else
-    PrintN(" " + RSet(Hex(ROM(i)),4,"0"))
-  EndIf
-Next
-
-Input()
-CloseConsole()
-
+If OpenConsole()
+  
+  ; Gestion des paramètres du programme
+  nbProgramParameters = CountProgramParameters()
+  If CountProgramParameters()
+    If ProgramParameter() = "-o"
+      strFileName.s = ProgramParameter()
+    Else
+      PrintN("Usage : rom_tools -o [output_file]")
+      Input()
+      CloseConsole()
+      End
+    EndIf
+    
+    ; Création du fichier
+    If FileSize(strFileName) => 0 
+      hFile = CreateFile(#PB_Any,strFileName)
+      PrintN("Fichier déja existant , voulez-vous l'écraser ? [o/n]")
+      strChoix.s{1} = UCase(Input())
+      If strChoix = "N"
+        CloseFile(hFile)
+        Input()
+        CloseConsole()
+        End
+      EndIf
+    Else
+      hFile = CreateFile(#PB_Any,strFileName)
+    EndIf
+    
+    
+    ; Remplissage du tableau mémoire par des zéro
+    For i = 0 To  (ArraySize(ROM()) - 1)
+      ROM(i)=0
+    Next
+    
+    ; Génération suivant les instructions et les cycles
+    Restore Instructions
+    For i= 0 To 15 ; Pour chaque instruction 
+      For j = 0 To 4 ; Pour chaque cycle
+        Read Inst
+        Adr = j << 4 + i ; Adrresse en ROM -> jjjj iiii => j :-> cycle # i :-> optcode
+        ROM(Adr) = Inst
+      Next
+    Next
+        
+    ; Ecriture de l'entête 
+    WriteStringN(hFile,"v2.0 raw")
+    ; Dump mémoire
+    For i = 0 To  (ArraySize(ROM()) - 1)
+      If (i+1) % 16 <> 0
+        WriteString(hFile,(RSet(Hex(ROM(i)),4,"0")+" "))
+        Print(RSet(Hex(ROM(i)),4,"0")+" ")
+      Else
+        WriteStringN(hFile,(RSet(Hex(ROM(i)),4,"0")+" "))
+        PrintN(RSet(Hex(ROM(i)),4,"0")+" ")
+      EndIf
+    Next
+    
+    ;Fermeture du fichier 
+    CloseFile(hFile)
+    
+  EndIf 
+  
+  Input()
+  CloseConsole()
+EndIf
 ; IDE Options = PureBasic 5.72 (Windows - x64)
-; CursorPosition = 79
-; FirstLine = 59
+; CursorPosition = 54
+; FirstLine = 36
 ; Folding = -
 ; EnableXP
