@@ -8,20 +8,20 @@
   <section name="data">
     <explorer view="..\..\SAP-1 Assembler\" pattern="0"/>
     <log show="1"/>
-    <lastopen date="2020-06-03 23:19" user="laure" host="PC-LAURE"/>
+    <lastopen date="2020-06-04 18:42" user="laure" host="PC-LAURE"/>
   </section>
   <section name="files">
     <file name="assembleur\sap-asm.pb">
-      <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="++"/>
-      <fingerprint md5="5e48e49fcff55d95891eb8df16c94663"/>
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="++"/>
+      <fingerprint md5="04e7365a32f936688d8cf12a5e528aa2"/>
     </file>
     <file name="IDE\SAP-1 IDE.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="++"/>
-      <fingerprint md5="4ccd1f7b7df62ebe55092392c4a0a2d2"/>
+      <fingerprint md5="609b78f3f9f5a32c049e1afd90b4d6f7"/>
     </file>
     <file name="rom tools\rom tools.pb">
-      <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="++"/>
-      <fingerprint md5="8ea45157dee46d668d7d5803732b838a"/>
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="++"/>
+      <fingerprint md5="35b3aac5165865dec3f44329dde276ff"/>
     </file>
   </section>
   <section name="targets">

@@ -7,12 +7,12 @@
   <section name="data">
     <explorer view="C:\ProgramData\PureBasic\Examples\" pattern="0"/>
     <log show="1"/>
-    <lastopen date="2020-05-30 01:47" user="laure" host="PC-LAURE"/>
+    <lastopen date="2020-06-04 10:02" user="laure" host="PC-LAURE"/>
   </section>
   <section name="files">
     <file name="sap-asm.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
-      <fingerprint md5="196a9e3a49f711c3a3431a8a2431692d"/>
+      <fingerprint md5="5e48e49fcff55d95891eb8df16c94663"/>
     </file>
   </section>
   <section name="targets">

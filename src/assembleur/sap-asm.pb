@@ -55,25 +55,26 @@ Global NewList symbol_table._symbol_table()
 #_memory_max_size = 15
 
 #err_file_not_found = "Erreur : Fichier non trouvé"
-#err_lexer_unknown_symbol = "Erreur lexicale ligne %1 : Symbole non reconnu"
-#err_lexer_symbol_already_defined = "Erreur lexicale ligne %1 : Un symbole du même type à déja été définis"
+#err_lexer_unknown_symbol = "Erreur : ligne %1 : Symbole non reconnu"
+#err_lexer_symbol_already_defined = "Erreur : ligne %1 : Un symbole du même type à déja été définis"
 #err_syntax = "Erreur de syntaxe ligne %1"
-#err_syntax_tab = "Tabulation manquante ligne %1"
-#err_syntax_instruction_missing = "Instruction attendu ligne %1"
-#err_syntax_operand_missing = "Opérande attendu ligne %1"
-#err_syntax_assignation_instruction_is_missing = "Instruction d'assignation de données attendu ligne %1"
-#err_syntax_value_missing = "Valeur attendu ligne %1"
-#err_semantic_over_memory = "Adresse en dehors des limites mémoire ligne %1"
-#err_semantic_out_of_memory = "Dépassement de la capacité mémoire"
+#err_syntax_tab = "Erreur : Tabulation manquante ligne %1"
+#err_syntax_instruction_missing = "Erreur : Instruction attendu ligne %1"
+#err_syntax_operand_missing = "Erreur : Opérande attendu ligne %1"
+#err_syntax_assignation_instruction_is_missing = "Erreur : Instruction d'assignation de données attendu ligne %1"
+#err_syntax_value_missing = "Erreur : Valeur attendu ligne %1"
+#err_syntax_expected_number = "Erreur : Nombre attendu ligne %1"
+#err_semantic_over_memory = "Erreur : Adresse en dehors des limites mémoire ligne %1"
+#err_semantic_out_of_memory = "Erreur : Dépassement de la capacité mémoire"
 
 #warming_label_not_use = "Avertissement : Label non utilisé ligne %1"
-#err_semantic_duplicate_label = "Etiquette déja définie ligne %1"
-#err_semantic_label_not_declared = "Etiquette non définie ligne %1"
+#err_semantic_duplicate_label = "Erreur : Etiquette déja définie ligne %1"
+#err_semantic_label_not_declared = "Erreur : Etiquette non définie ligne %1"
 
 
 #warming_data_not_use = "Avertissement : Donnée non utilisé ligne %1"
-#err_semantic_duplicate_data = "Donnée déja définie ligne %1"
-#err_semantic_data_not_declared = "Donnée non définie ligne %1"
+#err_semantic_duplicate_data = "Erreur : Donnée déja définie ligne %1"
+#err_semantic_data_not_declared = "Erreur : Donnée non définie ligne %1"
 ;- //////////  Général  //////////
 
 Procedure DisplayHead()
@@ -265,6 +266,12 @@ Procedure _lex_fill_instruction_map()
   instruction()\optCode = %00100000
   instruction("SUB")\asOperand = #True
   instruction()\optCode = %00110000
+  instruction("LDI")\asOperand = #True
+  instruction()\optCode = %01000000
+  instruction("ADI")\asOperand = #True
+  instruction()\optCode = %01010000
+  instruction("STA")\asOperand = #True
+  instruction()\optCode = %01100000
   instruction("JMP")\asOperand = #True
   instruction()\optCode = %11010000
   instruction("OUT")\asOperand = #False
@@ -290,7 +297,6 @@ Procedure.i _lex_open_assembler_file(strFilename.s)
     ProcedureReturn -1
   EndIf
 EndProcedure
-
 
 Procedure.s _lex_pack_string(string.s, separator.s) 
   Protected Chaine$,Chaine2$
@@ -544,7 +550,7 @@ Procedure _parser_instruction_operand()
     Select token()\type
         
       Case #_t_number,#_t_hex_number
-        If operand >= 0 And operand < #_memory_max_size
+        If operand >= 0 And operand <= #_memory_max_size
           _code_generate_instruction(memory,operand)
           _parser_next_token()
         Else
@@ -555,7 +561,10 @@ Procedure _parser_instruction_operand()
         If MapKey(instruction()) = "JMP"
           _label_reference(token()\value, _code_get_memory_address(),token()\line)
           _code_generate_instruction(memory) ; code bidon histoire de pas décalé tout le reste      
-        Else                                 ; Autres instructions qui n'utilisent pas les label mais adresse de données
+        ElseIf MapKey(instruction()) = "LDI" Or ; Instruction prenant une valeur immédiate
+                MapKey(instruction()) = "ADI"
+          _error(#err_syntax_expected_number,token()\line)          
+        Else ; Autres instructions qui n'utilisent pas les label mais adresse de données
           _data_reference(token()\value,_code_get_memory_address(),token()\line)
           _code_generate_instruction(memory) ; code bidon histoire de pas décalé tout le reste
         EndIf
@@ -703,7 +712,7 @@ Else
 EndIf
 End -1
 ; IDE Options = PureBasic 5.72 (Windows - x64)
-; CursorPosition = 278
-; FirstLine = 110
-; Folding = GACAAA5
+; CursorPosition = 273
+; FirstLine = 146
+; Folding = GABAAI5
 ; EnableXP

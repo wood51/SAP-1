@@ -47,23 +47,74 @@
 ;}
 
 DataSection
-  Instructions:
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0       , 0                ; NOP OptCode 0000
-  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #RO|#AI , 0                ; LDA OptCode 0001
-  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #RO|#BI , #EO|#AI|#FI      ; ADD OptCode 0010
-  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #RO|#BI , #SU|#EO|#AI|#FI  ; SUB OptCode 0011
-  Data.i #MI|#CO , #II|#RO|#CE , #IO|#AI   , 0       , 0                ; LDI OptCOde 0100
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0       , 0                ; 
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0       , 0                ; 
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0       , 0                ; 
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0       , 0                ; 
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0       , 0                ;  
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0       , 0                ; 
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0       , 0                ; 
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0       , 0                ; 
-  Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0       , 0                ; JMP OptCode 1101
-  Data.i #MI|#CO , #II|#RO|#CE , #AO|#OI   , 0       , 0                ; OUT OptCode 1110
-  Data.i #MI|#CO , #II|#RO|#CE , #Halt     , 0       , 0                ; HLT OptCode 1111
+  Instructions_NoZero_NoCarry:
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; NOP OptCode 0000
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #RO|#AI          , 0                ; LDA OptCode 0001
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #RO|#BI          , #EO|#AI|#FI      ; ADD OptCode 0010
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #RO|#BI          , #SU|#EO|#AI|#FI  ; SUB OptCode 0011
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#AI   , 0                , 0                ; LDI OptCode 0100
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#BI   , #EO|#AI|#FI      , 0                ; ADI OptCode 0101
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #AO|#RI          , 0                ; STA OptCode 0110
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; JC  OptCode 0111
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; JZ  OptCode 1000
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ;  
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; 
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; -
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; -
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JMP OptCode 1101
+  Data.i #MI|#CO , #II|#RO|#CE , #AO|#OI   , 0                , 0                ; OUT OptCode 1110
+  Data.i #MI|#CO , #II|#RO|#CE , #Halt     , 0                , 0                ; HLT OptCode 1111
+  Instructions_NoZero_Carry:
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; NOP OptCode 0000
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #RO|#AI          , 0                ; LDA OptCode 0001
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #RO|#BI          , #EO|#AI|#FI      ; ADD OptCode 0010
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #RO|#BI          , #SU|#EO|#AI|#FI  ; SUB OptCode 0011
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#AI   , 0                , 0                ; LDI OptCode 0100
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#BI   , #EO|#AI|#FI      , 0                ; ADI OptCode 0101
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #AO|#RI          , 0                ; STA OptCode 0110
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JC  OptCode 0111
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; JZ  OptCode 1000
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ;  
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; 
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; -
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; -
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JMP OptCode 1101
+  Data.i #MI|#CO , #II|#RO|#CE , #AO|#OI   , 0                , 0                ; OUT OptCode 1110
+  Data.i #MI|#CO , #II|#RO|#CE , #Halt     , 0                , 0                ; HLT OptCode 1111
+  Instructions_Zero_NoCarry:
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; NOP OptCode 0000
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #RO|#AI          , 0                ; LDA OptCode 0001
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #RO|#BI          , #EO|#AI|#FI      ; ADD OptCode 0010
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #RO|#BI          , #SU|#EO|#AI|#FI  ; SUB OptCode 0011
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#AI   , 0                , 0                ; LDI OptCode 0100
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#BI   , #EO|#AI|#FI      , 0                ; ADI OptCode 0101
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #AO|#RI          , 0                ; STA OptCode 0110
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; JC  OptCode 0111
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JZ  OptCode 1000
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ;  
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; 
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; -
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; -
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JMP OptCode 1101
+  Data.i #MI|#CO , #II|#RO|#CE , #AO|#OI   , 0                , 0                ; OUT OptCode 1110
+  Data.i #MI|#CO , #II|#RO|#CE , #Halt     , 0                , 0                ; HLT OptCode 1111
+  Instructions_Zero_Carry:
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; NOP OptCode 0000
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #RO|#AI          , 0                ; LDA OptCode 0001
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #RO|#BI          , #EO|#AI|#FI      ; ADD OptCode 0010
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #RO|#BI          , #SU|#EO|#AI|#FI  ; SUB OptCode 0011
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#AI   , 0                , 0                ; LDI OptCode 0100
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#BI   , #EO|#AI|#FI      , 0                ; ADI OptCode 0101
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #AO|#RI          , 0                ; STA OptCode 0110
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JC  OptCode 0111
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JZ  OptCode 1000
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ;  
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; 
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; -
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; -
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JMP OptCode 1101
+  Data.i #MI|#CO , #II|#RO|#CE , #AO|#OI   , 0                , 0                ; OUT OptCode 1110
+  Data.i #MI|#CO , #II|#RO|#CE , #Halt     , 0                , 0                ; HLT OptCode 1111
 EndDataSection
 
 Dim ROM(#ROM_SIZE)
@@ -103,12 +154,54 @@ If OpenConsole()
       ROM(i)=0
     Next
     
-    ; Génération suivant les instructions et les cycles
-    Restore Instructions
+    ; Génération suivant les instructions et les cycles por z = 0 et c = 0
+    Restore Instructions_NoZero_NoCarry
+    z = 0
+    c = 0
     For i= 0 To 15 ; Pour chaque instruction 
       For j = 0 To 4 ; Pour chaque cycle
         Read Inst
-        Adr = j << 4 + i ; Adrresse en ROM -> jjjj iiii => j :-> cycle # i :-> optcode
+        Adr = z << 10 + c << 9 + j << 4 + i ; Adrresse en ROM -> z c jjjj iiii =>z :-> zero flag # c :-> carry flag j :-> cycle # i :-> optcode
+        
+        ROM(Adr) = Inst
+      Next
+    Next
+    
+    ; Génération suivant les instructions et les cycles por z = 0 et c = 1
+    Restore Instructions_NoZero_Carry
+    z = 0
+    c = 1
+    For i= 0 To 15 ; Pour chaque instruction 
+      For j = 0 To 4 ; Pour chaque cycle
+        Read Inst
+        Adr = z << 9 + c << 8 + j << 4 + i ; Adrresse en ROM -> z c jjjj iiii =>z :-> zero flag # c :-> carry flag j :-> cycle # i :-> optcode
+        ;Debug(RSet(Bin(Adr),10,"0"))
+        ROM(Adr) = Inst
+      Next
+    Next
+    
+    ; Génération suivant les instructions et les cycles por z = 1 et c = 0
+    Restore Instructions_Zero_NoCarry
+    z = 1
+    c = 0
+    For i= 0 To 15 ; Pour chaque instruction 
+      For j = 0 To 4 ; Pour chaque cycle
+        Read Inst
+        Adr = z << 9 + c << 8 + j << 4 + i ; Adrresse en ROM -> z c jjjj iiii =>z :-> zero flag # c :-> carry flag j :-> cycle # i :-> optcode
+        ;Debug(RSet(Bin(Adr),10,"0"))
+        ROM(Adr) = Inst
+      Next
+    Next
+    
+    ; Génération suivant les instructions et les cycles por z = 1 et c = 1
+    Restore Instructions_Zero_Carry
+    z = 1
+    c = 1
+    For i= 0 To 15 ; Pour chaque instruction 
+      For j = 0 To 4 ; Pour chaque cycle
+        Read Inst
+        Adr = z << 9 + c << 8 + j << 4 + i ; Adrresse en ROM -> z c jjjj iiii =>z :-> zero flag # c :-> carry flag j :-> cycle # i :-> optcode
+        ;Debug(RSet(Bin(Adr),10,"0"))
         ROM(Adr) = Inst
       Next
     Next
@@ -135,7 +228,7 @@ If OpenConsole()
   CloseConsole()
 EndIf
 ; IDE Options = PureBasic 5.72 (Windows - x64)
-; CursorPosition = 54
-; FirstLine = 36
+; CursorPosition = 74
+; FirstLine = 134
 ; Folding = -
 ; EnableXP

@@ -8,12 +8,12 @@
   <section name="data">
     <explorer view="..\..\..\SAP-1 Assembler\" pattern="0"/>
     <log show="1"/>
-    <lastopen date="2020-06-04 07:48" user="laure" host="PC-LAURE"/>
+    <lastopen date="2020-06-07 14:48" user="laure" host="PC-LAURE"/>
   </section>
   <section name="files">
     <file name="rom tools.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
-      <fingerprint md5="e6ef61a62e4401f101c9348a0abf55d6"/>
+      <fingerprint md5="ee22f7deba990cf4b0d2316a5595f18c"/>
     </file>
   </section>
   <section name="targets">

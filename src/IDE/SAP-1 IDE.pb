@@ -21,7 +21,7 @@ DataSection
 EndDataSection
 ;}
 
-Global KeyWord.s = "NOP LDA ADD SUB JMP OUT HLT EQU"
+Global KeyWord.s = "NOP LDA ADD LDI ADI SUB JMP OUT HLT EQU"
 
 Enumeration 0
   #LexerState_Space
@@ -332,8 +332,6 @@ Procedure Compile()
   
   ClearGadgetItems(1)
   
-  
-  
   numBytes = ScintillaSendMessage(gadget, #SCI_GETLENGTH)
   If numBytes
     SCI_SaveFile(0)
@@ -493,7 +491,6 @@ If OpenWindow(0, 0, 0, 800, 600, "SAP-1 IDE - "+strFilename, #PB_Window_SystemMe
 EndIf
 ;}
 ; IDE Options = PureBasic 5.72 (Windows - x64)
-; CursorPosition = 454
-; FirstLine = 150
-; Folding = AAQg-
+; CursorPosition = 171
+; Folding = AAQQ-
 ; EnableXP
