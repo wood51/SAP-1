@@ -8,20 +8,20 @@
   <section name="data">
     <explorer view="..\..\SAP-1 Assembler\" pattern="0"/>
     <log show="1"/>
-    <lastopen date="2020-06-04 18:42" user="laure" host="PC-LAURE"/>
+    <lastopen date="2020-06-13 11:28" user="laure" host="LAPTOP-M38GLSBI"/>
   </section>
   <section name="files">
     <file name="assembleur\sap-asm.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="++"/>
-      <fingerprint md5="04e7365a32f936688d8cf12a5e528aa2"/>
+      <fingerprint md5="1fd67622185b3f638db70b63add4a4a9"/>
     </file>
     <file name="IDE\SAP-1 IDE.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="++"/>
-      <fingerprint md5="609b78f3f9f5a32c049e1afd90b4d6f7"/>
+      <fingerprint md5="d73f417366ff41c6a95549e428521c04"/>
     </file>
     <file name="rom tools\rom tools.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="++"/>
-      <fingerprint md5="35b3aac5165865dec3f44329dde276ff"/>
+      <fingerprint md5="d2db23ace81adfe9589c08ea3709959c"/>
     </file>
   </section>
   <section name="targets">
@@ -43,8 +43,8 @@
     </target>
     <target name="Rom tools DEBUG" enabled="1" default="0">
       <inputfile value="rom tools\rom tools.pb"/>
-      <outputfile value="..\tools\rom tools\rom tools.exe"/>
-      <executable value="..\tools\rom tools\rom tools.exe"/>
+      <outputfile value="..\tools\rom tools\rom_tools.exe"/>
+      <executable value="..\tools\rom tools\rom_tools.exe"/>
       <options/>
       <temporaryexe value="source"/>
       <format exe="console" cpu="0"/>

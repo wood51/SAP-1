@@ -270,8 +270,18 @@ Procedure _lex_fill_instruction_map()
   instruction()\optCode = %01000000
   instruction("ADI")\asOperand = #True
   instruction()\optCode = %01010000
-  instruction("STA")\asOperand = #True
+  instruction("SBI")\asOperand = #True
   instruction()\optCode = %01100000
+  instruction("STA")\asOperand = #True
+  instruction()\optCode = %01110000
+  instruction("JC")\asOperand = #True
+  instruction()\optCode = %10000000
+  instruction("JZ")\asOperand = #True
+  instruction()\optCode = %10010000
+  instruction("JNC")\asOperand = #True
+  instruction()\optCode = %10100000
+  instruction("JNZ")\asOperand = #True
+  instruction()\optCode = %10110000
   instruction("JMP")\asOperand = #True
   instruction()\optCode = %11010000
   instruction("OUT")\asOperand = #False
@@ -558,11 +568,10 @@ Procedure _parser_instruction_operand()
         EndIf
         
       Case #_t_identifier 
-        If MapKey(instruction()) = "JMP"
+        If MapKey(instruction()) = "JMP" Or MapKey(instruction()) = "JZ" Or MapKey(instruction()) = "JC"
           _label_reference(token()\value, _code_get_memory_address(),token()\line)
           _code_generate_instruction(memory) ; code bidon histoire de pas décalé tout le reste      
-        ElseIf MapKey(instruction()) = "LDI" Or ; Instruction prenant une valeur immédiate
-                MapKey(instruction()) = "ADI"
+        ElseIf MapKey(instruction()) = "LDI" Or MapKey(instruction()) = "ADI" Or MapKey(instruction()) = "SBI"; Instruction prenant une valeur immédiate
           _error(#err_syntax_expected_number,token()\line)          
         Else ; Autres instructions qui n'utilisent pas les label mais adresse de données
           _data_reference(token()\value,_code_get_memory_address(),token()\line)
@@ -712,7 +721,7 @@ Else
 EndIf
 End -1
 ; IDE Options = PureBasic 5.72 (Windows - x64)
-; CursorPosition = 273
-; FirstLine = 146
-; Folding = GABAAI5
+; CursorPosition = 283
+; FirstLine = 112
+; Folding = GABAAAw
 ; EnableXP

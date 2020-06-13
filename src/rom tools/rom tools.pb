@@ -54,12 +54,12 @@ DataSection
   Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #RO|#BI          , #SU|#EO|#AI|#FI  ; SUB OptCode 0011
   Data.i #MI|#CO , #II|#RO|#CE , #IO|#AI   , 0                , 0                ; LDI OptCode 0100
   Data.i #MI|#CO , #II|#RO|#CE , #IO|#BI   , #EO|#AI|#FI      , 0                ; ADI OptCode 0101
-  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #AO|#RI          , 0                ; STA OptCode 0110
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; JC  OptCode 0111
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; JZ  OptCode 1000
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ;  
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; 
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; -
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#BI   , #SU|#EO|#AI|#FI  , 0                ; SBI OptCode 0110 
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #AO|#RI          , 0                ; STA OptCode 0111
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; JC  OptCode 1000
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; JZ  OptCode 1001
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JNC OptCode 1010 
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JNZ Optcode 1011
   Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; -
   Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JMP OptCode 1101
   Data.i #MI|#CO , #II|#RO|#CE , #AO|#OI   , 0                , 0                ; OUT OptCode 1110
@@ -71,12 +71,12 @@ DataSection
   Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #RO|#BI          , #SU|#EO|#AI|#FI  ; SUB OptCode 0011
   Data.i #MI|#CO , #II|#RO|#CE , #IO|#AI   , 0                , 0                ; LDI OptCode 0100
   Data.i #MI|#CO , #II|#RO|#CE , #IO|#BI   , #EO|#AI|#FI      , 0                ; ADI OptCode 0101
-  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #AO|#RI          , 0                ; STA OptCode 0110
-  Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JC  OptCode 0111
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; JZ  OptCode 1000
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ;  
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; 
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; -
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#BI   , #SU|#EO|#AI|#FI  , 0                ; SBI OptCode 0110 
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #AO|#RI          , 0                ; STA OptCode 0111
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JC  OptCode 1000
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; JZ  OptCode 1001
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; JNC OptCode 1010
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JNZ Optcode 1011
   Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; -
   Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JMP OptCode 1101
   Data.i #MI|#CO , #II|#RO|#CE , #AO|#OI   , 0                , 0                ; OUT OptCode 1110
@@ -88,12 +88,12 @@ DataSection
   Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #RO|#BI          , #SU|#EO|#AI|#FI  ; SUB OptCode 0011
   Data.i #MI|#CO , #II|#RO|#CE , #IO|#AI   , 0                , 0                ; LDI OptCode 0100
   Data.i #MI|#CO , #II|#RO|#CE , #IO|#BI   , #EO|#AI|#FI      , 0                ; ADI OptCode 0101
-  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #AO|#RI          , 0                ; STA OptCode 0110
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; JC  OptCode 0111
-  Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JZ  OptCode 1000
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ;  
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; 
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; -
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#BI   , #SU|#EO|#AI|#FI  , 0                ; SBI OptCode 0110 
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #AO|#RI          , 0                ; STA OptCode 0111
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; JC  OptCode 1000
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JZ  OptCode 1001
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JNC OptCode 1010 
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; JNZ Optcode 1011
   Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; -
   Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JMP OptCode 1101
   Data.i #MI|#CO , #II|#RO|#CE , #AO|#OI   , 0                , 0                ; OUT OptCode 1110
@@ -105,12 +105,12 @@ DataSection
   Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #RO|#BI          , #SU|#EO|#AI|#FI  ; SUB OptCode 0011
   Data.i #MI|#CO , #II|#RO|#CE , #IO|#AI   , 0                , 0                ; LDI OptCode 0100
   Data.i #MI|#CO , #II|#RO|#CE , #IO|#BI   , #EO|#AI|#FI      , 0                ; ADI OptCode 0101
-  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #AO|#RI          , 0                ; STA OptCode 0110
-  Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JC  OptCode 0111
-  Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JZ  OptCode 1000
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ;  
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; 
-  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; -
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#BI   , #SU|#EO|#AI|#FI  , 0                ; SBI OptCode 0110 
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#MI   , #AO|#RI          , 0                ; STA OptCode 0111
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JC  OptCode 1000
+  Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JZ  OptCode 1001
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; JNC OptCode 1010
+  Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; JNZ Optcode 1011
   Data.i #MI|#CO , #II|#RO|#CE , 0         , 0                , 0                ; -
   Data.i #MI|#CO , #II|#RO|#CE , #IO|#Jump , 0                , 0                ; JMP OptCode 1101
   Data.i #MI|#CO , #II|#RO|#CE , #AO|#OI   , 0                , 0                ; OUT OptCode 1110
@@ -120,19 +120,7 @@ EndDataSection
 Dim ROM(#ROM_SIZE)
 
 If OpenConsole()
-  
-  ; Gestion des paramètres du programme
-  nbProgramParameters = CountProgramParameters()
-  If CountProgramParameters()
-    If ProgramParameter() = "-o"
-      strFileName.s = ProgramParameter()
-    Else
-      PrintN("Usage : rom_tools -o [output_file]")
-      Input()
-      CloseConsole()
-      End
-    EndIf
-    
+    strFileName.s = "decode_logic.bin" 
     ; Création du fichier
     If FileSize(strFileName) => 0 
       hFile = CreateFile(#PB_Any,strFileName)
@@ -222,13 +210,13 @@ If OpenConsole()
     ;Fermeture du fichier 
     CloseFile(hFile)
     
-  EndIf 
-  
+
+  PrintN("Appuyer sur ENTREE pour terminer ...")
   Input()
   CloseConsole()
 EndIf
 ; IDE Options = PureBasic 5.72 (Windows - x64)
-; CursorPosition = 74
-; FirstLine = 134
+; CursorPosition = 122
+; FirstLine = 112
 ; Folding = -
 ; EnableXP

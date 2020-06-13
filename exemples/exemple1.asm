@@ -1,10 +1,6 @@
-;////////////////////
-;/ Ajoute 2 nombres /
-;////////////////////
-
-	LDA nb_1 ;Charge nb_1 dans A
-	ADD nb_2 ;Additionne A avec nb_2
-	OUT 	 ;Affiche le résultat
-	HLT	 ;Arrêt du SAP-1
-nb_1	EQU 15   ;Définition de nb_1
-nb_2	EQU 7	 ;Définition de nb_2
+	  LDI 15 ; On charge 15 dans le registre A
+moins:	  OUT ; Affiche la valeur du registre A
+	  JZ  fin ; Si A = 0 alors on va a fin
+	  SBI 1 ; Soustrait 1 au registre A
+	  JMP moins ; continue et on va à moins
+fin:	  HLT ; On arrête le CPU�te le CPU

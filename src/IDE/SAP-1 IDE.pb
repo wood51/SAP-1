@@ -21,7 +21,7 @@ DataSection
 EndDataSection
 ;}
 
-Global KeyWord.s = "NOP LDA ADD LDI ADI SUB JMP OUT HLT EQU"
+Global KeyWord.s = "NOP LDA STA ADD SUB LDI ADI SBI JZ JC JNZ JNC JMP OUT HLT EQU"
 
 Enumeration 0
   #LexerState_Space
@@ -491,6 +491,6 @@ If OpenWindow(0, 0, 0, 800, 600, "SAP-1 IDE - "+strFilename, #PB_Window_SystemMe
 EndIf
 ;}
 ; IDE Options = PureBasic 5.72 (Windows - x64)
-; CursorPosition = 171
-; Folding = AAQQ-
+; CursorPosition = 23
+; Folding = AAAQ-
 ; EnableXP
